@@ -1,3 +1,3 @@
-export default function() {
-  alert('Hello world!')
-}
+import BarChart from './bar/BarChart'
+
+export default { BarChart }

@@ -8,6 +8,9 @@ module.exports = {
         library: 'starter',
         libraryTarget: 'var'
     },
+    externals: {
+        "d3": "d3"
+    },
     module: {
       rules: [{
             test: /\.scss$/,
@@ -22,7 +25,7 @@ module.exports = {
         loaders: [
           {
             test: /\.js$/,
-            loader: 'babel-loader?presets[]=es2016'
+            loader: 'babel-loader?presets[]=env'
           }
         ]
     },
