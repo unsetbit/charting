@@ -1,3 +1,5 @@
+$animation-time: .15s;
+$bar-color: rgb(114, 147, 203);
 html {
   width: 100%;
   height: 100%;
@@ -14,14 +16,75 @@ iframe:focus {
   box-sizing: border-box;
 }
 
-svg {
-  border: 5px solid blue;
+
+.plot-layer .plot-element {
+  rect.plot-body {
+    fill: none;
+    stroke: black;
+  }
+
+  rect.plot-value {
+    transition: width $animation-time ease;
+    fill: $bar-color;
+  }
+
+  .value-label {
+    font-size: 10px;
+
+    transition: fill $animation-time ease;
+
+    &.invert-text-color {
+      fill: white;
+    }
+  }
+
+  &.highlighted rect.plot-value{
+    opacity: .5;
+  }
+
+  &.selected .value-label{
+    font-weight: bold;
+  }
 }
 
-.value-label {
-  font-size: 10px;
+.axes-layer .tick {
+  text {
 
-  &.invert-text-color {
-    fill: white;
+  }
+
+  &.highlighted text{
+    font-weight: bold;
+  }
+
+  &.selected text {
+    font-weight: bold;
+  }
+}
+
+.highlight {
+  &.plot-element {
+    rect.plot-value{
+      fill: #ccc;
+    }
+  }
+
+  &.tick {
+    line {
+      stroke: blue;
+    }
+
+    text {
+      fill: blue;
+    }
+  }
+}
+
+.has-selection {
+  .plot-element rect.plot-value {
+    opacity: 0.3;
+  }
+
+  .plot-element.selected rect.plot-value {
+    opacity: 1;
   }
 }
